@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "526831984163",
+    "firebase_url": "https://polisee-7280f-default-rtdb.firebaseio.com",
+    "project_id": "polisee-7280f",
+    "storage_bucket": "polisee-7280f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526831984163:android:5e906650453f4c58795b96",
+        "android_client_info": {
+          "package_name": "com.mycompany.polisee"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjPrJgwaHXTOp4GQDRwgqLdqpzfdqx6MI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
