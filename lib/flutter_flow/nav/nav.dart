@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
+import '/backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -76,18 +78,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : SignupWidget(),
+          appStateNotifier.loggedIn ? SearchWidget() : SearchWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : SignupWidget(),
-        ),
-        FFRoute(
-          name: HomePageWidget.routeName,
-          path: HomePageWidget.routePath,
-          builder: (context, params) => HomePageWidget(),
+              appStateNotifier.loggedIn ? SearchWidget() : SearchWidget(),
         ),
         FFRoute(
           name: SignupWidget.routeName,
@@ -95,14 +92,29 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SignupWidget(),
         ),
         FFRoute(
-          name: TempWidget.routeName,
-          path: TempWidget.routePath,
-          builder: (context, params) => TempWidget(),
-        ),
-        FFRoute(
           name: LoginWidget.routeName,
           path: LoginWidget.routePath,
           builder: (context, params) => LoginWidget(),
+        ),
+        FFRoute(
+          name: SearchWidget.routeName,
+          path: SearchWidget.routePath,
+          builder: (context, params) => SearchWidget(
+            previousSearch: params.getParam(
+              'previousSearch',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: CandidateWidget.routeName,
+          path: CandidateWidget.routePath,
+          builder: (context, params) => CandidateWidget(
+            lastName: params.getParam(
+              'lastName',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -273,7 +285,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/signup';
+            return '/search';
           }
           return null;
         },
@@ -298,7 +310,7 @@ class FFRoute {
                     ),
                   ),
                 )
-              : page;
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition
