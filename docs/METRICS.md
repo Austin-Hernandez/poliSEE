@@ -10,6 +10,8 @@ Adoption is measured in the events page in the Analytics Dashboard. We can see t
 ### Daily Active Users:
 
 ### Retention:
+The Firebase SDK automatically logs events such as app opens and session starts, which are then used to calculate retention metrics (e.g., day 1, day 7, day 30). Additionally, you can set up custom events for more detailed insights, with all data viewable in the Firebase Analytics dashboard.
+
 
 ### Search Rate:
 This was essentially the click-through rate for our golden path. On Flutterflow, the toggle is flipped in the settings to automatically track when users go to the Search page and the Candidate page. We can divide the latter by the former to get what percentage of users search and find who they're looking for once they land on the Search page.
