@@ -8,6 +8,7 @@ The Net Promoter Score data is collected when the user fills out the survey ques
 Adoption is measured in the events page in the Analytics Dashboard. We can see the amount of signups in events which allows us to collect metrics for Adoption.
 
 ### Daily Active Users:
+We are measuring Daily Active Users (DAU) using Firebase's built-in analytics tools. Firebase Analytics provides an "Active Users" metric, which automatically tracks the number of unique users who engage with the app each day. This includes users who open the app or trigger specific events within a 24-hour period.
 
 ### Retention:
 The Firebase SDK automatically logs events such as app opens and session starts, which are then used to calculate retention metrics (e.g., day 1, day 7, day 30). Additionally, you can set up custom events for more detailed insights, with all data viewable in the Firebase Analytics dashboard.
