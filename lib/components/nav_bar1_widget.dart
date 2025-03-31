@@ -25,6 +25,8 @@ class _NavBar1WidgetState extends State<NavBar1Widget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NavBar1Model());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -1,8 +1,12 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'temp_widget.dart' show TempWidget;
+import 'wtau_widget.dart' show WtauWidget;
 import 'package:flutter/material.dart';
 
-class TempModel extends FlutterFlowModel<TempWidget> {
+class WtauModel extends FlutterFlowModel<WtauWidget> {
+  ///  Local state fields for this component.
+
+  bool? likeDislike;
+
   @override
   void initState(BuildContext context) {}
 
