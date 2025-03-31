@@ -15,9 +15,13 @@
 ### Name: Font on the Candidate Page
 - US5: Golden Path
 - Metric: Retention
-- Hypothesis: Changing the font from Karma to Arial will make the page easier to read and more user-friendly, leading to them coming back to the app for longer.
-- Experiment: Because of our small audience to begin with, we will show half of the users the font in Arial and half of them will stay with Karma. We will use Firebases built-in Remote Config and A/B Testing capabilities to update the font chosen by the app for half of our users. We will measure the retension rates on Firebase for members of both groups and compare if either has significantly higher retention rates. We will wait two weeks to make sure that any effects of this change are not due to novelty bias before comparing.
-- Variations
+- Hypothesis: Changing the font from Karma to Roboto will make the page easier to read and more user-friendly, leading to them coming back to the app for longer.
+- Experiment: Because of our small audience to begin with, we will show half of the users the font in Roboto and half of them will stay with Karma. We will use Firebases built-in Remote Config and A/B Testing capabilities to update the font chosen by the app for half of our users. We will only show it to half of our users so that we can directly compare them. If we made the change for all of our users, it would not be clear if the font was affecting retention or if some other contemporaneous change was. We will measure the retension rates on Firebase for members of both groups and compare if either has significantly higher retention rates. We will wait two weeks to make sure that any effects of this change are not due to novelty bias before comparing.
+- Variations: On one version, the screen will be Karma
+![image](https://github.com/user-attachments/assets/9d573bad-3583-4c79-abb7-ee1817c18557)
+- And in the other, it will be Roboto
+![image](https://github.com/user-attachments/assets/b834e66e-a65f-4604-b53f-0773da7c686e)
+
 ---
 ### Name: Position of the Textfield on the Candidate Page
 - US:
