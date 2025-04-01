@@ -4,6 +4,8 @@
 - Hypothesis: By changing the position of the search bar within the search page, it will help direct the user to the next step in the golden path and make the interface more user-friendly.
 - Experiment: We will show half of our users the original position of the search bar and the other half will see the updated version. We will measure the amount of users using the search bar once logged in to see which position is the most effective. We can do this through Firebase’s built in A/B  testing and Remote Config features.
 - Variations: ![image](https://github.com/user-attachments/assets/0b1c4f03-c134-4cfc-a3df-d587732acea0)
+  ![image](https://github.com/user-attachments/assets/062b51a5-5e9e-4c6a-bf90-854292216ce6)
+
 
 
 
