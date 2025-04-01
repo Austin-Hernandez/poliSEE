@@ -21,7 +21,7 @@ Control Group (50% of users): Default white background.
 
 Variant Group (50% of users): Yellow background (#FFF8D0 or a similar warm neutral tone).
 - Variations: ![image](https://github.com/user-attachments/assets/aa60d4a5-ac06-4805-915f-0907a83ee1ce)
-This is how the standard yellow background would look.
+  - This is how the standard yellow background would look.
 
 ![image](https://github.com/user-attachments/assets/2bd9ed7c-f7bf-4a57-aa05-25a8a7755f01)
 ---
