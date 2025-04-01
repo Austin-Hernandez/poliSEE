@@ -1,7 +1,7 @@
 ### Name: Position of Search Bar on Search Page
-- US:
-- Metric:
-- Hypothesis:
+- US4: Golden Path
+- Metric: Retention 
+- Hypothesis: By changing the position of the search bar within the search page, it will help direct the user to the next step in the golden path and make the interface more user-friendly.
 - Experiment:
 - Variations
 ---
@@ -13,7 +13,7 @@
 - Variations
 ---
 ### Name: Font on the Candidate Page
-- US5: Golden Path
+- US4: Golden Path
 - Metric: Retention
 - Hypothesis: Changing the font from Karma to Roboto will make the page easier to read and more user-friendly, leading to them coming back to the app for longer.
 - Experiment: Because of our small audience to begin with, we will show half of the users the font in Roboto and half of them will stay with Karma. We will use Firebases built-in Remote Config and A/B Testing capabilities to update the font chosen by the app for half of our users. We will only show it to half of our users so that we can directly compare them. If we made the change for all of our users, it would not be clear if the font was affecting retention or if some other contemporaneous change was. We will measure the retension rates on Firebase for members of both groups and compare if either has significantly higher retention rates. We will wait two weeks to make sure that any effects of this change are not due to novelty bias before comparing.
