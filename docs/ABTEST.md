@@ -24,7 +24,6 @@ Variant Group (50% of users): Yellow background (#FFF8D0 or a similar warm neutr
 This is how the standard yellow background would look.
 
 ![image](https://github.com/user-attachments/assets/2bd9ed7c-f7bf-4a57-aa05-25a8a7755f01)
-This is the white background
 ---
 ### Name: Font on the Candidate Page
 - US4: Golden Path
