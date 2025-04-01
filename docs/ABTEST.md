@@ -37,9 +37,11 @@
 - Variations
 ---
 ### Name: Presence of Logo on Candidate Page
-- US:
-- Metric:
-- Hypothesis:
-- Experiment:
-- Variations
+- US6: Metrics Collection for User Engagement and Product Optimization
+- Metric: Retention
+- Hypothesis: We hypothesize that including the PoliSEE logo on the Candidate Page will increase user retention. The presence of the logo may enhance brand recognition, create a more polished and trustworthy experience, and encourage users to explore more pages within the app. Conversely, a lack of branding might make the page feel disconnected, leading to lower engagement and fewer return visits.
+- Experiment: Because our audience is relatively small, we will divide users into two groups: one that sees the Candidate Page with the PoliSEE logo and one that sees it without. Using Firebase’s Remote Config and A/B Testing tools, we will ensure an even split between the two versions. This controlled approach allows us to isolate the impact of the logo on retention without interference from other potential changes. We will track return visits using Firebase Analytics and compare retention rates between the two groups. The experiment will run for two weeks to account for any short-term novelty effects before drawing conclusions.
+- Variations: With and without the PoliSEE logo
+<img width="341" alt="Image" src="https://github.com/user-attachments/assets/0ed36567-9fe3-4c31-acf2-19bb30459364" />
+<img width="343" alt="Image" src="https://github.com/user-attachments/assets/c87832a2-f103-4dea-9913-aa27f751a81a" />
 ---
