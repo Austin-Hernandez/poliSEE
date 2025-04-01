@@ -12,11 +12,18 @@
   
 ---
 ### Name: Background Color of Search Page
-- US:
-- Metric:
-- Hypothesis:
-- Experiment:
-- Variations
+- US4: Golden Path
+- Metric: Adoption
+- Hypothesis: Changing the app’s background color from white to yellow will make the news feed feel more politically neutral and visually engaging, leading to longer session durations and more articles read per visit.
+- Experiment: Using Firebase Remote Config and A/B Testing tools, we will create two variants of the app:
+
+Control Group (50% of users): Default white background.
+
+Variant Group (50% of users): Yellow background (#FFF8D0 or a similar warm neutral tone).
+- Variations: ![image](https://github.com/user-attachments/assets/aa60d4a5-ac06-4805-915f-0907a83ee1ce)
+  - This is how the standard yellow background would look.
+
+![image](https://github.com/user-attachments/assets/2bd9ed7c-f7bf-4a57-aa05-25a8a7755f01)
 ---
 ### Name: Font on the Candidate Page
 - US4: Golden Path
@@ -30,11 +37,15 @@
 
 ---
 ### Name: Position of the Textfield on the Candidate Page
-- US:
-- Metric:
-- Hypothesis:
-- Experiment:
-- Variations
+- US4: Golden Path
+- Metric: Engagement
+- Hypothesis: Placing the summary text before the main content will allow users to better understand the key points right away, leading to increased engagement with the rest of the page. Conversely, placing the summary at the end will encourage users to explore the main content first, potentially leading to deeper interaction with the content itself.
+- Experiment: We will show half of the users the summary text at the beginning of the page, directly before the main content. The other half will see the summary text at the end of the page, after they’ve interacted with the content. We will measure user engagement, such as time spent on the page and the number of interactions with the main content, to determine which layout leads to more meaningful engagement. Firebase’s A/B Testing and Remote Config features will be used to implement this experiment.
+
+- Variations:
+  - Variation 1 (Summary Before Content): <img width="372" alt="before" src="https://github.com/user-attachments/assets/b58cd030-9a37-43cb-a5e8-65cd6af2fe51" />
+  - Variation 2 (Summary After Content): <img width="366" alt="after" src="https://github.com/user-attachments/assets/e094311d-858c-4512-9c58-4e4aa7e7eef0" />
+
 ---
 ### Name: Presence of Logo on Candidate Page
 - US6: Metrics Collection for User Engagement and Product Optimization
