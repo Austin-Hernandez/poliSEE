@@ -2,7 +2,7 @@
 - US4: Golden Path
 - Metric: Retention 
 - Hypothesis: By changing the position of the search bar within the search page, it will help direct the user to the next step in the golden path and make the interface more user-friendly.
-- Experiment:
+- Experiment: We will show half of our users the original position of the search bar and the other half will see the updated version. We will measure the amount of users using the search bar once logged in to see which position is the most effective. We can do this through Firebase’s built in A/B  testing and Remote Config features.
 - Variations
 ---
 ### Name: Background Color of Search Page
