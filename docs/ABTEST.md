@@ -12,11 +12,19 @@
   
 ---
 ### Name: Background Color of Search Page
-- US:
-- Metric:
-- Hypothesis:
-- Experiment:
-- Variations
+- US4: Golden Path
+- Metric: Adoption
+- Hypothesis: Changing the app’s background color from white to yellow will make the news feed feel more politically neutral and visually engaging, leading to longer session durations and more articles read per visit.
+- Experiment: Using Firebase Remote Config and A/B Testing tools, we will create two variants of the app:
+
+Control Group (50% of users): Default white background.
+
+Variant Group (50% of users): Yellow background (#FFF8D0 or a similar warm neutral tone).
+- Variations: ![image](https://github.com/user-attachments/assets/aa60d4a5-ac06-4805-915f-0907a83ee1ce)
+This is how the standard yellow background would look.
+
+![image](https://github.com/user-attachments/assets/2bd9ed7c-f7bf-4a57-aa05-25a8a7755f01)
+This is the white background
 ---
 ### Name: Font on the Candidate Page
 - US4: Golden Path
