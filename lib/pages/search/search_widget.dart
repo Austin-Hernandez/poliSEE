@@ -117,27 +117,29 @@ class _SearchWidgetState extends State<SearchWidget> {
             backgroundColor: Color(0xFFDCB656),
             body: SafeArea(
               top: true,
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
-                child: Stack(
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(-0.03, 0.21),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 10.0, 10.0, 10.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFFCE8B9),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(-0.03, 0.21),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          10.0, 10.0, 10.0, 10.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFCE8B9),
+                          borderRadius: BorderRadius.circular(8.0),
+                          shape: BoxShape.rectangle,
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Container(
+                      width: 375.0,
+                      decoration: BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -157,21 +159,21 @@ class _SearchWidgetState extends State<SearchWidget> {
                                 ],
                                 shape: BoxShape.circle,
                               ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 35.0, 0.0, 50.0),
-                                child: Container(
-                                  width: 201.0,
-                                  height: 201.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.asset(
-                                    'assets/images/image-removebg-preview_70-removebg-preview.png',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 20.0, 0.0, 20.0),
+                            child: Container(
+                              width: 201.0,
+                              height: 201.0,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: Image.asset(
+                                'assets/images/Poli-SEE-Transparent-App-Icon.png',
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
@@ -424,85 +426,63 @@ class _SearchWidgetState extends State<SearchWidget> {
                         ],
                       ),
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: SafeArea(
-                        child: Container(
-                          width: double.infinity,
-                          height: 110.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFDCB656),
-                            borderRadius: BorderRadius.circular(0.0),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              FlutterFlowIconButton(
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 1.0),
+                    child: SafeArea(
+                      child: Container(
+                        width: double.infinity,
+                        height: 88.9,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFDCB656),
+                          borderRadius: BorderRadius.circular(0.0),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: FlutterFlowIconButton(
                                 borderRadius: 64.0,
                                 buttonSize: 80.0,
                                 fillColor: Color(0xFFFCE8B9),
                                 icon: FaIcon(
                                   FontAwesomeIcons.search,
                                   color: Color(0xFFAB8424),
-                                  size: 24.0,
+                                  size: 44.0,
                                 ),
                                 onPressed: () {
                                   print('IconButton pressed ...');
                                 },
                               ),
-                              FlutterFlowIconButton(
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: FlutterFlowIconButton(
                                 borderRadius: 64.0,
                                 buttonSize: 80.0,
                                 fillColor: Color(0xFFAB8424),
                                 icon: Icon(
-                                  Icons.arrow_back,
+                                  Icons.person,
                                   color: FlutterFlowTheme.of(context).info,
-                                  size: 24.0,
+                                  size: 40.0,
                                 ),
                                 onPressed: () async {
                                   logFirebaseEvent(
-                                      'SEARCH_PAGE_arrow_back_ICN_ON_TAP');
+                                      'SEARCH_PAGE_person_ICN_ON_TAP');
                                   logFirebaseEvent('IconButton_navigate_to');
 
                                   context.pushNamed(LoginWidget.routeName);
                                 },
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 0.75),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 10.0),
-                        child: Container(
-                          width: 383.8,
-                          height: 5.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFAB8424),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 10.0),
-                        child: Container(
-                          width: 5.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFAB8424),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

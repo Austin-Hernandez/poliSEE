@@ -55,6 +55,16 @@ class CandidatesRecord extends FirestoreRecord {
   String get image => _image ?? '';
   bool hasImage() => _image != null;
 
+  // "PolicySum" field.
+  String? _policySum;
+  String get policySum => _policySum ?? '';
+  bool hasPolicySum() => _policySum != null;
+
+  // "Summary" field.
+  String? _summary;
+  String get summary => _summary ?? '';
+  bool hasSummary() => _summary != null;
+
   void _initializeFields() {
     _cityTown = snapshotData['CityTown'] as String?;
     _county = snapshotData['County'] as String?;
@@ -64,6 +74,8 @@ class CandidatesRecord extends FirestoreRecord {
     _lastName = snapshotData['LastName'] as String?;
     _party = snapshotData['Party'] as String?;
     _image = snapshotData['Image'] as String?;
+    _policySum = snapshotData['PolicySum'] as String?;
+    _summary = snapshotData['Summary'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -109,6 +121,8 @@ Map<String, dynamic> createCandidatesRecordData({
   String? lastName,
   String? party,
   String? image,
+  String? policySum,
+  String? summary,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -120,6 +134,8 @@ Map<String, dynamic> createCandidatesRecordData({
       'LastName': lastName,
       'Party': party,
       'Image': image,
+      'PolicySum': policySum,
+      'Summary': summary,
     }.withoutNulls,
   );
 
@@ -138,7 +154,9 @@ class CandidatesRecordDocumentEquality implements Equality<CandidatesRecord> {
         e1?.middleInitial == e2?.middleInitial &&
         e1?.lastName == e2?.lastName &&
         e1?.party == e2?.party &&
-        e1?.image == e2?.image;
+        e1?.image == e2?.image &&
+        e1?.policySum == e2?.policySum &&
+        e1?.summary == e2?.summary;
   }
 
   @override
@@ -150,7 +168,9 @@ class CandidatesRecordDocumentEquality implements Equality<CandidatesRecord> {
         e?.middleInitial,
         e?.lastName,
         e?.party,
-        e?.image
+        e?.image,
+        e?.policySum,
+        e?.summary
       ]);
 
   @override

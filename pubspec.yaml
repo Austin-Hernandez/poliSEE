@@ -39,6 +39,7 @@ dependencies:
   cloud_functions_web: 4.10.4
   collection: 1.19.0
   easy_debounce: 2.0.1
+  equatable: 2.0.5
   firebase_analytics: 11.3.5
   firebase_analytics_platform_interface: 4.2.7
   firebase_analytics_web: 0.5.10+4
@@ -54,6 +55,9 @@ dependencies:
   firebase_performance: 0.10.0+10
   firebase_performance_platform_interface: 0.1.4+46
   firebase_performance_web: 0.1.7+4
+  firebase_remote_config: 5.1.5
+  firebase_remote_config_platform_interface: 1.4.46
+  firebase_remote_config_web: 1.7.4
   flutter_animate: 4.5.0
   flutter_cache_manager: 3.4.1
   flutter_rating_bar: 4.0.1
@@ -66,8 +70,10 @@ dependencies:
   google_sign_in_ios: 5.7.7
   google_sign_in_platform_interface: 2.4.5
   google_sign_in_web: 0.12.4+2
+  http: 1.2.2
   intl: 0.19.0
   json_path: 0.7.2
+  mime_type: 1.0.0
   page_transition: 2.1.0
   path_provider: 2.1.4
   path_provider_android: 2.2.10
@@ -110,10 +116,24 @@ dependency_overrides:
   uuid: ^4.0.0
 
 dev_dependencies:
+  flutter_launcher_icons: 0.13.1
   flutter_lints: 4.0.0
+  image: 4.2.0
+  integration_test: 
+    sdk: flutter
   lints: 4.0.0
   flutter_test:
     sdk: flutter
+
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  web:
+    generate: true
+  image_path: 'assets/images/app_launcher_icon.png'
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
