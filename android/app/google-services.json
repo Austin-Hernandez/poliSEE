@@ -13,7 +13,12 @@
           "package_name": "com.mycompany.polisee"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "526831984163-4te1bru1v22s2vng3t05es6sd46u58hv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCjPrJgwaHXTOp4GQDRwgqLdqpzfdqx6MI"
@@ -21,7 +26,41 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526831984163-4te1bru1v22s2vng3t05es6sd46u58hv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526831984163:android:eb47e2a7fb0ae9f3795b96",
+        "android_client_info": {
+          "package_name": "com.uricsc305.poliSEE"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526831984163-4te1bru1v22s2vng3t05es6sd46u58hv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjPrJgwaHXTOp4GQDRwgqLdqpzfdqx6MI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526831984163-4te1bru1v22s2vng3t05es6sd46u58hv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

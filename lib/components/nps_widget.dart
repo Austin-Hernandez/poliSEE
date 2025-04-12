@@ -69,6 +69,7 @@ class _NpsWidgetState extends State<NpsWidget> {
                 child: Container(
                   width: double.infinity,
                   child: Slider(
+                    activeColor: Color(0xFFDCB656),
                     inactiveColor: Color(0x33000000),
                     min: 1.0,
                     max: 10.0,
@@ -170,14 +171,14 @@ class _NpsWidgetState extends State<NpsWidget> {
                       },
                       itemBuilder: (context, index) => Icon(
                         Icons.star_rounded,
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: Color(0xFFDCB656),
                       ),
                       direction: Axis.horizontal,
-                      initialRating: _model.ratingBarValue ??= 3.0,
-                      unratedColor: FlutterFlowTheme.of(context).accent1,
+                      initialRating: _model.ratingBarValue ??= 0.0,
+                      unratedColor: FlutterFlowTheme.of(context).alternate,
                       itemCount: 5,
                       itemSize: 24.0,
-                      glowColor: FlutterFlowTheme.of(context).primary,
+                      glowColor: Color(0xFFDCB656),
                     ),
                   ),
                 ],
@@ -205,7 +206,7 @@ class _NpsWidgetState extends State<NpsWidget> {
                     padding: EdgeInsets.all(8.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
+                    color: Color(0xFFDCB656),
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Inter Tight',
                           color: FlutterFlowTheme.of(context).info,

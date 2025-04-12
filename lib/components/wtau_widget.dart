@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -99,8 +100,18 @@ class _WtauWidgetState extends State<WtauWidget> {
                             color: Color(0xFFFFF9EA),
                             size: 30.0,
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
+                          onPressed: () async {
+                            logFirebaseEvent(
+                                'WTAU_thumb_up_alt_rounded_ICN_ON_TAP');
+                            logFirebaseEvent('IconButton_backend_call');
+
+                            await WtaufeedbackRecord.collection
+                                .doc()
+                                .set(createWtaufeedbackRecordData(
+                                  like: false,
+                                  candidateName:
+                                      FFDevEnvironmentValues.currentEnvironment,
+                                ));
                           },
                         ),
                         FlutterFlowIconButton(
@@ -114,8 +125,16 @@ class _WtauWidgetState extends State<WtauWidget> {
                             color: Color(0xFFAB8424),
                             size: 30.0,
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
+                          onPressed: () async {
+                            logFirebaseEvent(
+                                'WTAU_thumb_down_alt_rounded_ICN_ON_TAP');
+                            logFirebaseEvent('IconButton_backend_call');
+
+                            await WtaufeedbackRecord.collection
+                                .doc()
+                                .set(createWtaufeedbackRecordData(
+                                  dislike: false,
+                                ));
                           },
                         ),
                       ],

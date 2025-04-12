@@ -10,7 +10,8 @@ Future initFirebase() async {
             projectId: "polisee-7280f",
             storageBucket: "polisee-7280f.firebasestorage.app",
             messagingSenderId: "526831984163",
-            appId: "1:526831984163:web:66072ea9be565096795b96"));
+            appId: "1:526831984163:web:66072ea9be565096795b96",
+            measurementId: "G-YX037TNXVC"));
   } else {
     await Firebase.initializeApp();
   }

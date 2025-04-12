@@ -66,7 +66,7 @@ class _SignupWidgetState extends State<SignupWidget> {
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
               child: Container(
-                width: 375.0,
+                width: double.infinity,
                 height: double.infinity,
                 decoration: BoxDecoration(
                   color: Color(0xFFFCE8B9),
@@ -84,16 +84,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                         alignment: AlignmentDirectional(0.0, -0.9),
                         child: Container(
                           decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 4.0,
-                                color: Color(0x33000000),
-                                offset: Offset(
-                                  0.0,
-                                  4.0,
-                                ),
-                              )
-                            ],
                             shape: BoxShape.circle,
                           ),
                           child: Padding(
@@ -107,7 +97,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 shape: BoxShape.circle,
                               ),
                               child: Image.asset(
-                                'assets/images/image-removebg-preview_70-removebg-preview.png',
+                                'assets/images/Poli-SEE-Transparent-App-Icon.png',
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -117,12 +107,138 @@ class _SignupWidgetState extends State<SignupWidget> {
                       Form(
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.disabled,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
+                        child: Container(
+                          width: 375.0,
+                          decoration: BoxDecoration(),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 35.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(
+                                            0.0,
+                                            4.0,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    child: Container(
+                                      width: 300.0,
+                                      child: TextFormField(
+                                        controller:
+                                            _model.emailSignupTextController,
+                                        focusNode: _model.emailSignupFocusNode,
+                                        onChanged: (_) => EasyDebounce.debounce(
+                                          '_model.emailSignupTextController',
+                                          Duration(milliseconds: 2000),
+                                          () => safeSetState(() {}),
+                                        ),
+                                        autofocus: false,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Inter',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          hintText: 'Email...',
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Karma',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                letterSpacing: 0.0,
+                                              ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0xFFAB8424),
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          filled: true,
+                                          fillColor: Color(0xFFFFF9EA),
+                                          suffixIcon: _model
+                                                  .emailSignupTextController!
+                                                  .text
+                                                  .isNotEmpty
+                                              ? InkWell(
+                                                  onTap: () async {
+                                                    _model
+                                                        .emailSignupTextController
+                                                        ?.clear();
+                                                    safeSetState(() {});
+                                                  },
+                                                  child: Icon(
+                                                    Icons.clear,
+                                                    size: 22,
+                                                  ),
+                                                )
+                                              : null,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        cursorColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                        validator: _model
+                                            .emailSignupTextControllerValidator
+                                            .asValidator(context),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 35.0),
                                 child: Container(
@@ -142,15 +258,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     width: 300.0,
                                     child: TextFormField(
                                       controller:
-                                          _model.emailSignupTextController,
-                                      focusNode: _model.emailSignupFocusNode,
-                                      onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.emailSignupTextController',
-                                        Duration(milliseconds: 2000),
-                                        () => safeSetState(() {}),
-                                      ),
+                                          _model.passwordSignupTextController,
+                                      focusNode: _model.passwordSignupFocusNode,
                                       autofocus: false,
-                                      obscureText: false,
+                                      obscureText:
+                                          !_model.passwordSignupVisibility,
                                       decoration: InputDecoration(
                                         isDense: true,
                                         labelStyle: FlutterFlowTheme.of(context)
@@ -159,7 +271,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontFamily: 'Inter',
                                               letterSpacing: 0.0,
                                             ),
-                                        hintText: 'Email...',
+                                        hintText: 'Password...',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
@@ -205,23 +317,22 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         ),
                                         filled: true,
                                         fillColor: Color(0xFFFFF9EA),
-                                        suffixIcon: _model
-                                                .emailSignupTextController!
-                                                .text
-                                                .isNotEmpty
-                                            ? InkWell(
-                                                onTap: () async {
-                                                  _model
-                                                      .emailSignupTextController
-                                                      ?.clear();
-                                                  safeSetState(() {});
-                                                },
-                                                child: Icon(
-                                                  Icons.clear,
-                                                  size: 22,
-                                                ),
-                                              )
-                                            : null,
+                                        suffixIcon: InkWell(
+                                          onTap: () => safeSetState(
+                                            () => _model
+                                                    .passwordSignupVisibility =
+                                                !_model
+                                                    .passwordSignupVisibility,
+                                          ),
+                                          focusNode:
+                                              FocusNode(skipTraversal: true),
+                                          child: Icon(
+                                            _model.passwordSignupVisibility
+                                                ? Icons.visibility_outlined
+                                                : Icons.visibility_off_outlined,
+                                            size: 22,
+                                          ),
+                                        ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -232,17 +343,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       cursorColor: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       validator: _model
-                                          .emailSignupTextControllerValidator
+                                          .passwordSignupTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 35.0),
-                              child: Container(
+                              Container(
                                 decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
@@ -250,7 +357,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       color: Color(0x33000000),
                                       offset: Offset(
                                         0.0,
-                                        4.0,
+                                        2.0,
                                       ),
                                     )
                                   ],
@@ -258,12 +365,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 child: Container(
                                   width: 300.0,
                                   child: TextFormField(
-                                    controller:
-                                        _model.passwordSignupTextController,
-                                    focusNode: _model.passwordSignupFocusNode,
+                                    controller: _model
+                                        .confirmPasswordSignupTextController,
+                                    focusNode:
+                                        _model.confirmPasswordSignupFocusNode,
                                     autofocus: false,
                                     obscureText:
-                                        !_model.passwordSignupVisibility,
+                                        !_model.confirmPasswordSignupVisibility,
                                     decoration: InputDecoration(
                                       isDense: true,
                                       labelStyle: FlutterFlowTheme.of(context)
@@ -272,7 +380,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      hintText: 'Password...',
+                                      hintText: 'Confirm Password...',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -320,13 +428,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       suffixIcon: InkWell(
                                         onTap: () => safeSetState(
                                           () => _model
-                                                  .passwordSignupVisibility =
-                                              !_model.passwordSignupVisibility,
+                                                  .confirmPasswordSignupVisibility =
+                                              !_model
+                                                  .confirmPasswordSignupVisibility,
                                         ),
                                         focusNode:
                                             FocusNode(skipTraversal: true),
                                         child: Icon(
-                                          _model.passwordSignupVisibility
+                                          _model.confirmPasswordSignupVisibility
                                               ? Icons.visibility_outlined
                                               : Icons.visibility_off_outlined,
                                           size: 22,
@@ -342,200 +451,101 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     cursorColor: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     validator: _model
-                                        .passwordSignupTextControllerValidator
+                                        .confirmPasswordSignupTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 4.0,
-                                    color: Color(0x33000000),
-                                    offset: Offset(
-                                      0.0,
-                                      4.0,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              child: Container(
-                                width: 300.0,
-                                child: TextFormField(
-                                  controller: _model
-                                      .confirmPasswordSignupTextController,
-                                  focusNode:
-                                      _model.confirmPasswordSignupFocusNode,
-                                  autofocus: false,
-                                  obscureText:
-                                      !_model.confirmPasswordSignupVisibility,
-                                  decoration: InputDecoration(
-                                    isDense: true,
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintText: 'Confirm Password...',
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Karma',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFAB8424),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    filled: true,
-                                    fillColor: Color(0xFFFFF9EA),
-                                    suffixIcon: InkWell(
-                                      onTap: () => safeSetState(
-                                        () => _model
-                                                .confirmPasswordSignupVisibility =
-                                            !_model
-                                                .confirmPasswordSignupVisibility,
-                                      ),
-                                      focusNode: FocusNode(skipTraversal: true),
-                                      child: Icon(
-                                        _model.confirmPasswordSignupVisibility
-                                            ? Icons.visibility_outlined
-                                            : Icons.visibility_off_outlined,
-                                        size: 22,
+                              Align(
+                                alignment: AlignmentDirectional(-1.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      40.0, 15.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'SIGNUP_PAGE_SignInText_ON_TAP');
+                                      logFirebaseEvent(
+                                          'SignInText_navigate_to');
+
+                                      context.pushNamed(LoginWidget.routeName);
+                                    },
+                                    child: Text(
+                                      'Already have an account? Log in...',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Karma',
+                                        color: Color(0xFF3C2D08),
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                        shadows: [
+                                          Shadow(
+                                            color: Color(0xFFAB8424),
+                                            offset: Offset(0.0, 3.0),
+                                            blurRadius: 4.0,
+                                          )
+                                        ],
                                       ),
                                     ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  cursorColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  validator: _model
-                                      .confirmPasswordSignupTextControllerValidator
-                                      .asValidator(context),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              40.0, 15.0, 0.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              logFirebaseEvent('SIGNUP_PAGE_SignInText_ON_TAP');
-                              logFirebaseEvent('SignInText_navigate_to');
+                              Align(
+                                alignment: AlignmentDirectional(-1.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      40.0, 15.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'SIGNUP_PAGE_GuestText_ON_TAP');
+                                      logFirebaseEvent('GuestText_navigate_to');
 
-                              context.pushNamed(LoginWidget.routeName);
-                            },
-                            child: Text(
-                              'Already have an account? Log in...',
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                fontFamily: 'Karma',
-                                color: Color(0xFF3C2D08),
-                                fontSize: 16.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                                shadows: [
-                                  Shadow(
-                                    color: Color(0xFFAB8424),
-                                    offset: Offset(0.0, 3.0),
-                                    blurRadius: 4.0,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              40.0, 15.0, 0.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              logFirebaseEvent('SIGNUP_PAGE_GuestText_ON_TAP');
-                              logFirebaseEvent('GuestText_navigate_to');
-
-                              context.pushNamed(
-                                SearchWidget.routeName,
-                                queryParameters: {
-                                  'previousSearch': serializeParam(
-                                    '',
-                                    ParamType.String,
+                                      context.pushNamed(
+                                        SearchWidget.routeName,
+                                        queryParameters: {
+                                          'previousSearch': serializeParam(
+                                            '',
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    },
+                                    child: Text(
+                                      'Continue as guest',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                        fontFamily: 'Karma',
+                                        color: Color(0xFF3C2D08),
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                        shadows: [
+                                          Shadow(
+                                            color: Color(0xFFAB8424),
+                                            offset: Offset(0.0, 3.0),
+                                            blurRadius: 4.0,
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                }.withoutNulls,
-                              );
-                            },
-                            child: Text(
-                              'Continue as guest',
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                fontFamily: 'Karma',
-                                color: Color(0xFF3C2D08),
-                                fontSize: 16.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                                shadows: [
-                                  Shadow(
-                                    color: Color(0xFFAB8424),
-                                    offset: Offset(0.0, 3.0),
-                                    blurRadius: 4.0,
-                                  )
-                                ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                       ),
@@ -584,6 +594,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     email:
                                         _model.emailSignupTextController.text,
                                     loginCount: 0,
+                                    isAdmin: false,
                                   ));
 
                               logFirebaseEvent('Button_navigate_to');
