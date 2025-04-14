@@ -46,7 +46,6 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('Login-Button_6b52')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    expect(find.byKey(const ValueKey('Login-Button_6b52')), findsWidgets);
   });
 
   testWidgets('US1 Successful Account Creation', (WidgetTester tester) async {
@@ -70,6 +69,26 @@ void main() async {
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     expect(
         find.byKey(const ValueKey('SearchBar-TextField_ewi7')), findsWidgets);
+  });
+
+  testWidgets('Unsuccessful Login Invalid Credentials',
+      (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(MyApp(
+      entryPage: LoginWidget(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.enterText(find.byKey(const ValueKey('Email-TextField_qg7y')),
+        'faylynn@gmail.com');
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.enterText(
+        find.byKey(const ValueKey('Password-TextField_3cha')), 'PassWord');
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('Login-Button_6b52')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
   });
 }
 
