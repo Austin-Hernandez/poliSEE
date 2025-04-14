@@ -193,6 +193,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                             child: Container(
                               width: 322.0,
                               child: TextFormField(
+                                key: ValueKey('SearchBar-TextField_ewi7'),
                                 controller:
                                     _model.searchBarTextFieldTextController,
                                 focusNode: _model.searchBarTextFieldFocusNode,
@@ -457,6 +458,35 @@ class _SearchWidgetState extends State<SearchWidget> {
                                 },
                               ),
                             ),
+                            if ((valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false) !=
+                                    null) &&
+                                valueOrDefault<bool>(
+                                    currentUserDocument?.isAdmin, false))
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => FlutterFlowIconButton(
+                                    borderRadius: 64.0,
+                                    buttonSize: 80.0,
+                                    fillColor: Color(0xFFFCE8B9),
+                                    icon: Icon(
+                                      Icons.auto_awesome_rounded,
+                                      color: Color(0xFFAB8424),
+                                      size: 44.0,
+                                    ),
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'SEARCH_auto_awesome_rounded_ICN_ON_TAP');
+                                      logFirebaseEvent(
+                                          'IconButton_navigate_to');
+
+                                      context
+                                          .pushNamed(AdminpageWidget.routeName);
+                                    },
+                                  ),
+                                ),
+                              ),
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowIconButton(

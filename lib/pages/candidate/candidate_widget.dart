@@ -1,13 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/wtau_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'candidate_model.dart';
 export 'candidate_model.dart';
 
@@ -38,32 +36,6 @@ class _CandidateWidgetState extends State<CandidateWidget> {
     _model = createModel(context, () => CandidateModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Candidate'});
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('CANDIDATE_PAGE_Candidate_ON_INIT_STATE');
-      logFirebaseEvent('Candidate_bottom_sheet');
-      await showModalBottomSheet(
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        enableDrag: false,
-        context: context,
-        builder: (context) {
-          return GestureDetector(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-              FocusManager.instance.primaryFocus?.unfocus();
-            },
-            child: Padding(
-              padding: MediaQuery.viewInsetsOf(context),
-              child: Container(
-                height: 300.0,
-                child: WtauWidget(),
-              ),
-            ),
-          );
-        },
-      ).then((value) => safeSetState(() {}));
-    });
 
     _model.summaryTextFieldFocusNode ??= FocusNode();
 
@@ -145,6 +117,7 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             SingleChildScrollView(
+                              primary: false,
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -393,6 +366,7 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                   child: Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: SingleChildScrollView(
+                                      primary: false,
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -533,7 +507,8 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                                           fontFamily: 'Karma',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    maxLines: null,
+                                                    maxLines: 25,
+                                                    minLines: 3,
                                                     cursorColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -569,18 +544,15 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                if (valueOrDefault<bool>(
+                                                if ((valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false) !=
+                                                        null) &&
+                                                    valueOrDefault<bool>(
                                                         currentUserDocument
                                                             ?.isAdmin,
-                                                        false)
-                                                    ? true
-                                                    : (valueOrDefault<bool>(
-                                                                currentUserDocument
-                                                                    ?.isAdmin,
-                                                                false) ==
-                                                            true
-                                                        ? true
-                                                        : false))
+                                                        false))
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
@@ -769,6 +741,7 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                     maxLines: 25,
+                                                    minLines: 3,
                                                     cursorColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -788,102 +761,108 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                 ),
                               ),
                             ),
-                            Container(
-                              width: 300.2,
-                              height: 150.33,
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 16.0, 16.0, 16.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      'Was this article useful?',
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineSmall
-                                          .override(
-                                            fontFamily: 'Karma',
-                                            color: Color(0xFF3C2D08),
-                                            fontSize: 15.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        FlutterFlowIconButton(
-                                          borderColor: Colors.transparent,
-                                          borderRadius: 30.0,
-                                          borderWidth: 1.0,
-                                          buttonSize: 60.0,
-                                          fillColor: Color(0xFFAB8424),
-                                          icon: Icon(
-                                            Icons.thumb_up_alt_rounded,
-                                            color: Color(0xFFFFF9EA),
-                                            size: 30.0,
-                                          ),
-                                          onPressed: () async {
-                                            logFirebaseEvent(
-                                                'CANDIDATE_thumb_up_alt_rounded_ICN_ON_TA');
-                                            logFirebaseEvent(
-                                                'IconButton_backend_call');
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
+                              child: Container(
+                                width: 300.2,
+                                height: 166.54,
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 16.0, 16.0, 16.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        'Was this article useful?',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Karma',
+                                              color: Color(0xFF3C2D08),
+                                              fontSize: 15.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 30.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 60.0,
+                                            fillColor: Color(0xFFAB8424),
+                                            icon: Icon(
+                                              Icons.thumb_up_alt_rounded,
+                                              color: Color(0xFFFFF9EA),
+                                              size: 30.0,
+                                            ),
+                                            onPressed: () async {
+                                              logFirebaseEvent(
+                                                  'CANDIDATE_thumb_up_alt_rounded_ICN_ON_TA');
+                                              logFirebaseEvent(
+                                                  'IconButton_backend_call');
 
-                                            await WtaufeedbackRecord.collection
-                                                .doc()
-                                                .set(
-                                                    createWtaufeedbackRecordData(
-                                                  like: false,
-                                                  candidateName:
-                                                      widget.lastName,
-                                                ));
-                                          },
-                                        ),
-                                        FlutterFlowIconButton(
-                                          borderColor: Colors.transparent,
-                                          borderRadius: 30.0,
-                                          borderWidth: 1.0,
-                                          buttonSize: 60.0,
-                                          fillColor: Color(0xFFFFF9EA),
-                                          icon: Icon(
-                                            Icons.thumb_down_alt_rounded,
-                                            color: Color(0xFFAB8424),
-                                            size: 30.0,
+                                              await WtaufeedbackRecord
+                                                  .collection
+                                                  .doc()
+                                                  .set(
+                                                      createWtaufeedbackRecordData(
+                                                    like: false,
+                                                    candidateName:
+                                                        widget.lastName,
+                                                  ));
+                                            },
                                           ),
-                                          onPressed: () async {
-                                            logFirebaseEvent(
-                                                'CANDIDATE_thumb_down_alt_rounded_ICN_ON_');
-                                            logFirebaseEvent(
-                                                'IconButton_backend_call');
+                                          FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            borderRadius: 30.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 60.0,
+                                            fillColor: Color(0xFFFFF9EA),
+                                            icon: Icon(
+                                              Icons.thumb_down_alt_rounded,
+                                              color: Color(0xFFAB8424),
+                                              size: 30.0,
+                                            ),
+                                            onPressed: () async {
+                                              logFirebaseEvent(
+                                                  'CANDIDATE_thumb_down_alt_rounded_ICN_ON_');
+                                              logFirebaseEvent(
+                                                  'IconButton_backend_call');
 
-                                            await WtaufeedbackRecord.collection
-                                                .doc()
-                                                .set(
-                                                    createWtaufeedbackRecordData(
-                                                  dislike: false,
-                                                  candidateName:
-                                                      widget.lastName,
-                                                ));
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      'Thank you for your feedback!',
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Karma',
-                                            color: Color(0xFF3C2D08),
-                                            letterSpacing: 0.0,
+                                              await WtaufeedbackRecord
+                                                  .collection
+                                                  .doc()
+                                                  .set(
+                                                      createWtaufeedbackRecordData(
+                                                    dislike: false,
+                                                    candidateName:
+                                                        widget.lastName,
+                                                  ));
+                                            },
                                           ),
-                                    ),
-                                  ].divide(SizedBox(height: 16.0)),
+                                        ],
+                                      ),
+                                      Text(
+                                        'Thank you for your feedback!',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Karma',
+                                              color: Color(0xFF3C2D08),
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 16.0)),
+                                  ),
                                 ),
                               ),
                             ),

@@ -116,7 +116,6 @@ class ParameterData {
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
   'Signup': ParameterData.none(),
-  'Login': ParameterData.none(),
   'Search': (data) async => ParameterData(
         allParams: {
           'previousSearch': getParameter<String>(data, 'previousSearch'),
@@ -127,6 +126,9 @@ final parametersBuilderMap =
           'lastName': getParameter<String>(data, 'lastName'),
         },
       ),
+  'electionSearch': ParameterData.none(),
+  'Login': ParameterData.none(),
+  'adminpage': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

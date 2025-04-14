@@ -134,6 +134,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     child: Container(
                                       width: 300.0,
                                       child: TextFormField(
+                                        key: ValueKey('Email-Signup_xqf3'),
                                         controller:
                                             _model.emailSignupTextController,
                                         focusNode: _model.emailSignupFocusNode,
@@ -257,6 +258,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   child: Container(
                                     width: 300.0,
                                     child: TextFormField(
+                                      key: ValueKey('Password-Signup_ohrr'),
                                       controller:
                                           _model.passwordSignupTextController,
                                       focusNode: _model.passwordSignupFocusNode,
@@ -365,6 +367,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 child: Container(
                                   width: 300.0,
                                   child: TextFormField(
+                                    key:
+                                        ValueKey('ConfirmPassword-Signup_rnei'),
                                     controller: _model
                                         .confirmPasswordSignupTextController,
                                     focusNode:
@@ -480,19 +484,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                        fontFamily: 'Karma',
-                                        color: Color(0xFF3C2D08),
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                        shadows: [
-                                          Shadow(
-                                            color: Color(0xFFAB8424),
-                                            offset: Offset(0.0, 3.0),
-                                            blurRadius: 4.0,
-                                          )
-                                        ],
-                                      ),
+                                            fontFamily: 'Karma',
+                                            color: Color(0xFF3C2D08),
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                     ),
                                   ),
                                 ),
@@ -528,19 +525,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                        fontFamily: 'Karma',
-                                        color: Color(0xFF3C2D08),
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                        shadows: [
-                                          Shadow(
-                                            color: Color(0xFFAB8424),
-                                            offset: Offset(0.0, 3.0),
-                                            blurRadius: 4.0,
-                                          )
-                                        ],
-                                      ),
+                                            fontFamily: 'Karma',
+                                            color: Color(0xFF3C2D08),
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                     ),
                                   ),
                                 ),
@@ -555,6 +545,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 75.0, 0.0, 50.0),
                           child: FFButtonWidget(
+                            key: ValueKey('Button_gpln'),
                             onPressed: () async {
                               logFirebaseEvent(
                                   'SIGNUP_PAGE_SIGN_UP_BTN_ON_TAP');
@@ -613,7 +604,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             text: 'Sign Up',
                             options: FFButtonOptions(
                               width: 200.0,
-                              height: 44.4,
+                              height: 48.82,
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -625,7 +616,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     fontFamily: 'Karma',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
-                                    fontSize: 20.0,
+                                    fontSize: 30.0,
                                     letterSpacing: 0.0,
                                   ),
                               elevation: 0.0,

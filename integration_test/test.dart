@@ -44,9 +44,32 @@ void main() async {
         find.byKey(const ValueKey('Password-TextField_3cha')), 'notAPassword');
     FocusManager.instance.primaryFocus?.unfocus();
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byKey(const ValueKey('Login-Button_9jkw')));
+    await tester.tap(find.byKey(const ValueKey('Login-Button_6b52')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    expect(find.byKey(const ValueKey('Login-Button_9jkw')), findsWidgets);
+    expect(find.byKey(const ValueKey('Login-Button_6b52')), findsWidgets);
+  });
+
+  testWidgets('US1 Successful Account Creation', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(MyApp(
+      entryPage: SignupWidget(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.enterText(
+        find.byKey(const ValueKey('Email-Signup_xqf3')), 'j_barboza@uri.edu');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.enterText(
+        find.byKey(const ValueKey('Password-Signup_ohrr')), 'password');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.enterText(
+        find.byKey(const ValueKey('ConfirmPassword-Signup_rnei')), 'password');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.tap(find.byKey(const ValueKey('Button_gpln')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    expect(
+        find.byKey(const ValueKey('SearchBar-TextField_ewi7')), findsWidgets);
   });
 }
 

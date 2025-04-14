@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -340,10 +341,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   onTap: () async {
                                     logFirebaseEvent(
                                         'LOGIN_PAGE_GuestText_ON_TAP');
+                                    logFirebaseEvent('GuestText_auth');
+                                    GoRouter.of(context).prepareAuthEvent();
+                                    await authManager.signOut();
+                                    GoRouter.of(context)
+                                        .clearRedirectLocation();
+
                                     logFirebaseEvent('GuestText_navigate_to');
 
-                                    context.pushNamed(
+                                    context.pushNamedAuth(
                                       SearchWidget.routeName,
+                                      context.mounted,
                                       queryParameters: {
                                         'previousSearch': serializeParam(
                                           '',
@@ -433,83 +441,75 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Align(
-                        alignment: AlignmentDirectional(0.0, 1.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 50.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 4.0,
-                                  color: Color(0x33000000),
-                                  offset: Offset(
-                                    0.0,
-                                    4.0,
-                                  ),
-                                )
-                              ],
-                            ),
-                            child: FFButtonWidget(
-                              key: ValueKey('Login-Button_9jkw'),
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'LOGIN_PAGE_Login-Button_ON_TAP');
-                                logFirebaseEvent('Login-Button_auth');
-                                GoRouter.of(context).prepareAuthEvent();
+                    FFButtonWidget(
+                      key: ValueKey('Login-Button_6b52'),
+                      onPressed: () async {
+                        logFirebaseEvent('LOGIN_PAGE_Login-Button_ON_TAP');
+                        logFirebaseEvent('Login-Button_auth');
+                        GoRouter.of(context).prepareAuthEvent();
 
-                                final user = await authManager.signInWithEmail(
-                                  context,
-                                  _model.emailTextFieldTextController.text,
-                                  _model.passwordTextFieldTextController.text,
-                                );
-                                if (user == null) {
-                                  return;
-                                }
+                        final user = await authManager.signInWithEmail(
+                          context,
+                          _model.emailTextFieldTextController.text,
+                          _model.passwordTextFieldTextController.text,
+                        );
+                        if (user == null) {
+                          return;
+                        }
 
-                                logFirebaseEvent('Login-Button_navigate_to');
+                        logFirebaseEvent('Login-Button_backend_call');
 
-                                context.pushNamedAuth(
-                                  SearchWidget.routeName,
-                                  context.mounted,
-                                  queryParameters: {
-                                    'previousSearch': serializeParam(
-                                      ' ',
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                );
-                              },
-                              text: 'Login',
-                              options: FFButtonOptions(
-                                width: 200.0,
-                                height: 60.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: Color(0xFFF3D27D),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Karma',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 30.0,
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 0.0,
-                                borderSide: BorderSide(
-                                  color: Color(0xFFAB8424),
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                            ),
+                        await currentUserReference!.update({
+                          ...mapToFirestore(
+                            {
+                              'login_count': FieldValue.increment(1),
+                            },
                           ),
+                        });
+                        if (valueOrDefault<bool>(
+                            currentUserDocument?.isAdmin, false)) {
+                          logFirebaseEvent('Login-Button_navigate_to');
+
+                          context.pushNamedAuth(
+                              AdminpageWidget.routeName, context.mounted);
+                        } else {
+                          logFirebaseEvent('Login-Button_navigate_to');
+
+                          context.pushNamedAuth(
+                            SearchWidget.routeName,
+                            context.mounted,
+                            queryParameters: {
+                              'previousSearch': serializeParam(
+                                ' ',
+                                ParamType.String,
+                              ),
+                            }.withoutNulls,
+                          );
+                        }
+                      },
+                      text: 'Login',
+                      options: FFButtonOptions(
+                        width: 200.0,
+                        height: 60.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFFF3D27D),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleSmall
+                            .override(
+                              fontFamily: 'Karma',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 30.0,
+                              letterSpacing: 0.0,
+                            ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: Color(0xFFAB8424),
+                          width: 2.0,
                         ),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ],

@@ -95,11 +95,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           builder: (context, params) => SignupWidget(),
         ),
         FFRoute(
-          name: LoginWidget.routeName,
-          path: LoginWidget.routePath,
-          builder: (context, params) => LoginWidget(),
-        ),
-        FFRoute(
           name: SearchWidget.routeName,
           path: SearchWidget.routePath,
           builder: (context, params) => SearchWidget(
@@ -118,6 +113,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: ElectionSearchWidget.routeName,
+          path: ElectionSearchWidget.routePath,
+          builder: (context, params) => ElectionSearchWidget(),
+        ),
+        FFRoute(
+          name: LoginWidget.routeName,
+          path: LoginWidget.routePath,
+          builder: (context, params) => LoginWidget(),
+        ),
+        FFRoute(
+          name: AdminpageWidget.routeName,
+          path: AdminpageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => AdminpageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

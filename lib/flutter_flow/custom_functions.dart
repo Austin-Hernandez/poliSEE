@@ -40,3 +40,19 @@ String? elipseString(
 
   return output;
 }
+
+String? listToString(List<String>? inputList) {
+  // Make the function take in a list of strings and then return a string that concatenates each element of the list into one string with ", " as a delimiter
+  if (inputList == null || inputList.isEmpty) return null;
+  return inputList.join(', ');
+}
+
+bool isValidURL(String? inputText) {
+  // Checks to see if the inputted string is formatted like a valid URL to a news article. It must not contain illegal characters. It must start with "http://" or "https://". It must contain a top-level domain (ex. ".com", ".net", ".org", etc.)
+  if (inputText == null) return false;
+
+  final urlPattern = r'^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}';
+  final regex = RegExp(urlPattern, caseSensitive: false);
+
+  return regex.hasMatch(inputText);
+}
