@@ -490,6 +490,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowIconButton(
+                                key: ValueKey('IconButton_8xsr'),
                                 borderRadius: 64.0,
                                 buttonSize: 80.0,
                                 fillColor: Color(0xFFAB8424),
