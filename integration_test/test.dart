@@ -33,9 +33,17 @@ void main() async {
     await tester.pumpWidget(const MyApp());
     await GoogleFonts.pendingFonts();
 
-    await tester.pumpAndSettle(const Duration(milliseconds: 10000));
+    await tester.pumpAndSettle(
+      const Duration(milliseconds: 10000),
+      EnginePhase.sendSemanticsUpdate,
+      const Duration(milliseconds: 9000),
+    );
     await tester.tap(find.byKey(const ValueKey('IconButton_8xsr')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 10000));
+    await tester.pumpAndSettle(
+      const Duration(milliseconds: 10000),
+      EnginePhase.sendSemanticsUpdate,
+      const Duration(milliseconds: 9000),
+    );
     await tester.enterText(find.byKey(const ValueKey('Email-TextField_qg7y')),
         'notAUser@gmail.com');
     FocusManager.instance.primaryFocus?.unfocus();
