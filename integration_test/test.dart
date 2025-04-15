@@ -98,6 +98,30 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('Login-Button_6b52')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
   });
+
+  testWidgets('Unsuccessful Creation - Account Already Exists',
+      (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(MyApp(
+      entryPage: SignupWidget(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.pumpAndSettle();
+    await tester.enterText(
+        find.byKey(const ValueKey('Email-Signup_xqf3')), 'test@example.com');
+    await tester.enterText(
+        find.byKey(const ValueKey('Password-Signup_ohrr')), 'testpassword');
+    await tester.enterText(
+        find.byKey(const ValueKey('ConfirmPassword-Signup_rnei')),
+        'testpassword');
+    await tester.tap(find.byKey(const ValueKey('Button_gpln')));
+    await tester.pumpAndSettle();
+    expect(
+        find.text('Error: The email is already in use by a different account'),
+        findsWidgets);
+  });
 }
 
 // There are certain types of errors that can happen during tests but
