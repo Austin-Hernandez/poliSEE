@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:poli_s_e_e/flutter_flow/flutter_flow_drop_down.dart';
 import 'package:poli_s_e_e/flutter_flow/flutter_flow_icon_button.dart';
 import 'package:poli_s_e_e/flutter_flow/flutter_flow_widgets.dart';
 import 'package:poli_s_e_e/flutter_flow/flutter_flow_theme.dart';
@@ -108,7 +109,7 @@ void main() async {
     ));
     await GoogleFonts.pendingFonts();
 
-    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
         find.byKey(const ValueKey('Email-Signup_xqf3')), 'test@example.com');
     await tester.enterText(
@@ -117,7 +118,7 @@ void main() async {
         find.byKey(const ValueKey('ConfirmPassword-Signup_rnei')),
         'testpassword');
     await tester.tap(find.byKey(const ValueKey('Button_gpln')));
-    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     expect(
         find.text('Error: The email is already in use by a different account'),
         findsWidgets);

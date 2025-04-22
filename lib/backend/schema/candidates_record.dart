@@ -65,6 +65,11 @@ class CandidatesRecord extends FirestoreRecord {
   String get summary => _summary ?? '';
   bool hasSummary() => _summary != null;
 
+  // "Age" field.
+  int? _age;
+  int get age => _age ?? 0;
+  bool hasAge() => _age != null;
+
   void _initializeFields() {
     _cityTown = snapshotData['CityTown'] as String?;
     _county = snapshotData['County'] as String?;
@@ -76,6 +81,7 @@ class CandidatesRecord extends FirestoreRecord {
     _image = snapshotData['Image'] as String?;
     _policySum = snapshotData['PolicySum'] as String?;
     _summary = snapshotData['Summary'] as String?;
+    _age = castToType<int>(snapshotData['Age']);
   }
 
   static CollectionReference get collection =>
@@ -123,6 +129,7 @@ Map<String, dynamic> createCandidatesRecordData({
   String? image,
   String? policySum,
   String? summary,
+  int? age,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -136,6 +143,7 @@ Map<String, dynamic> createCandidatesRecordData({
       'Image': image,
       'PolicySum': policySum,
       'Summary': summary,
+      'Age': age,
     }.withoutNulls,
   );
 
@@ -156,7 +164,8 @@ class CandidatesRecordDocumentEquality implements Equality<CandidatesRecord> {
         e1?.party == e2?.party &&
         e1?.image == e2?.image &&
         e1?.policySum == e2?.policySum &&
-        e1?.summary == e2?.summary;
+        e1?.summary == e2?.summary &&
+        e1?.age == e2?.age;
   }
 
   @override
@@ -170,7 +179,8 @@ class CandidatesRecordDocumentEquality implements Equality<CandidatesRecord> {
         e?.party,
         e?.image,
         e?.policySum,
-        e?.summary
+        e?.summary,
+        e?.age
       ]);
 
   @override

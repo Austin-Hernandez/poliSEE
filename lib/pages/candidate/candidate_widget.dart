@@ -206,7 +206,7 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                                 queryParameters: {
                                                   'previousSearch':
                                                       serializeParam(
-                                                    '',
+                                                    '${candidateCandidatesRecord?.firstName} ${widget.lastName}',
                                                     ParamType.String,
                                                   ),
                                                 }.withoutNulls,
@@ -214,6 +214,177 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                             },
                                           ),
                                         ),
+                                      ],
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, -1.22),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        if ((valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false) !=
+                                                null) &&
+                                            valueOrDefault<bool>(
+                                                currentUserDocument?.isAdmin,
+                                                false))
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 10.0),
+                                              child: AuthUserStreamWidget(
+                                                builder: (context) =>
+                                                    FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'CANDIDATE_PAGE_UPDATEPOLICYSUM_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'UPDATEPOLICYSUM_backend_call');
+
+                                                    await candidateCandidatesRecord!
+                                                        .reference
+                                                        .update(
+                                                            createCandidatesRecordData(
+                                                      policySum: _model
+                                                          .policyKeyIssuesTextFieldTextController
+                                                          .text,
+                                                      summary: _model
+                                                          .summaryTextFieldTextController
+                                                          .text,
+                                                    ));
+                                                  },
+                                                  text: 'UPDATE',
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 0.0,
+                                                                16.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF3971EF),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Inter Tight',
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    elevation: 0.0,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        if ((valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false) !=
+                                                null) &&
+                                            valueOrDefault<bool>(
+                                                currentUserDocument?.isAdmin,
+                                                false))
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: AuthUserStreamWidget(
+                                              builder: (context) =>
+                                                  FFButtonWidget(
+                                                onPressed: () async {
+                                                  logFirebaseEvent(
+                                                      'CANDIDATE_PAGE_DELETE_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'DELETE_alert_dialog');
+                                                  var confirmDialogResponse =
+                                                      await showDialog<bool>(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Delete${candidateCandidatesRecord?.firstName} ${candidateCandidatesRecord?.lastName}?'),
+                                                                content: Text(
+                                                                    'This cannot be undone'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                    child: Text(
+                                                                        'Cancel'),
+                                                                  ),
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                    child: Text(
+                                                                        'Delete'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          ) ??
+                                                          false;
+                                                  if (confirmDialogResponse) {
+                                                    logFirebaseEvent(
+                                                        'DELETE_navigate_to');
+
+                                                    context.pushNamed(
+                                                        AdminpageWidget
+                                                            .routeName);
+
+                                                    logFirebaseEvent(
+                                                        'DELETE_backend_call');
+                                                    await candidateCandidatesRecord!
+                                                        .reference
+                                                        .delete();
+                                                  }
+                                                },
+                                                text: 'DELETE',
+                                                options: FFButtonOptions(
+                                                  height: 40.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          16.0, 0.0, 16.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: Color(0xFFEF393C),
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Inter Tight',
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  elevation: 0.0,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                       ],
                                     ),
                                   ),
@@ -292,7 +463,12 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                                 Padding(
                                                   padding: EdgeInsets.all(10.0),
                                                   child: Text(
-                                                    'Age',
+                                                    valueOrDefault<String>(
+                                                      candidateCandidatesRecord
+                                                          .age
+                                                          .toString(),
+                                                      'Age',
+                                                    ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -536,102 +712,13 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                                       ),
                                             ),
                                           ),
-                                          Align(
-                                            alignment: AlignmentDirectional(
-                                                0.0, -1.22),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                if ((valueOrDefault<bool>(
-                                                            currentUserDocument
-                                                                ?.isAdmin,
-                                                            false) !=
-                                                        null) &&
-                                                    valueOrDefault<bool>(
-                                                        currentUserDocument
-                                                            ?.isAdmin,
-                                                        false))
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: AuthUserStreamWidget(
-                                                      builder: (context) =>
-                                                          FFButtonWidget(
-                                                        onPressed: () async {
-                                                          logFirebaseEvent(
-                                                              'CANDIDATE_PAGE_UPDATEPOLICYSUM_ON_TAP');
-                                                          logFirebaseEvent(
-                                                              'UPDATEPOLICYSUM_backend_call');
-
-                                                          await candidateCandidatesRecord
-                                                              .reference
-                                                              .update(
-                                                                  createCandidatesRecordData(
-                                                            policySum: _model
-                                                                .policyKeyIssuesTextFieldTextController
-                                                                .text,
-                                                            summary: _model
-                                                                .summaryTextFieldTextController
-                                                                .text,
-                                                          ));
-                                                        },
-                                                        text: 'UPDATE',
-                                                        options:
-                                                            FFButtonOptions(
-                                                          height: 40.0,
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      16.0,
-                                                                      0.0),
-                                                          iconPadding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          color:
-                                                              Color(0xFFEF393C),
-                                                          textStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Inter Tight',
-                                                                    color: Colors
-                                                                        .white,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
-                                                          elevation: 0.0,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                              ],
-                                            ),
-                                          ),
                                           Container(
                                             decoration: BoxDecoration(
                                               boxShadow: [
                                                 BoxShadow(
                                                   blurRadius: 4.0,
                                                   color: Color(0x33000000),
-                                                  offset: Offset(
-                                                    0.0,
-                                                    6.0,
-                                                  ),
+                                                  offset: Offset(0.0, 0.0),
                                                 )
                                               ],
                                             ),
@@ -766,7 +853,7 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                   0.0, 10.0, 0.0, 0.0),
                               child: Container(
                                 width: 300.2,
-                                height: 166.54,
+                                height: 166.5,
                                 decoration: BoxDecoration(),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
