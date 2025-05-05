@@ -8,15 +8,25 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class GoogleCivicAPICall {
-  static Future<ApiCallResponse> call() async {
+class GNewsCall {
+  static Future<ApiCallResponse> call({
+    String? q = 'Obama',
+  }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'Google Civic API',
+      callName: 'GNews',
       apiUrl:
-          'https://www.googleapis.com/civicinfo/v2/elections?key=AIzaSyCVPEM7AV3JafkCxGMSkSLI3kpZR0Uu3Zg',
+          'https://gnews.io/api/v4/search?q=example&apikey=f1204ce3d1810f65d74b231098a6862b',
       callType: ApiCallType.GET,
       headers: {},
-      params: {},
+      params: {
+        'q': q,
+        'lang': "en",
+        'country': "us",
+        'max': "16",
+        'in': "title, description",
+        'nullable': "none",
+        'sortBy': "publishedAt",
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -25,6 +35,16 @@ class GoogleCivicAPICall {
       alwaysAllowBody: false,
     );
   }
+
+  static List<String>? articles(dynamic response) => (getJsonField(
+        response,
+        r'''$.articles[:].url''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class ApiPagingParams {

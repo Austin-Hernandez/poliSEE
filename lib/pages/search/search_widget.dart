@@ -1,15 +1,18 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/nps_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'search_model.dart';
 export 'search_model.dart';
 
@@ -17,7 +20,7 @@ class SearchWidget extends StatefulWidget {
   const SearchWidget({
     super.key,
     String? previousSearch,
-  }) : this.previousSearch = previousSearch ?? ' ';
+  }) : this.previousSearch = previousSearch ?? '';
 
   /// The name of the candidate whose page the user is coming from
   final String previousSearch;
@@ -177,249 +180,396 @@ class _SearchWidgetState extends State<SearchWidget> {
                               ),
                             ),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 4.0,
-                                  color: Color(0x33000000),
-                                  offset: Offset(
-                                    0.0,
-                                    4.0,
-                                  ),
-                                )
-                              ],
-                            ),
-                            child: Container(
-                              width: 322.0,
-                              child: TextFormField(
-                                controller:
-                                    _model.searchBarTextFieldTextController,
-                                focusNode: _model.searchBarTextFieldFocusNode,
-                                onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.searchBarTextFieldTextController',
-                                  Duration(milliseconds: 500),
-                                  () => safeSetState(() {}),
-                                ),
-                                autofocus: false,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  isDense: true,
-                                  labelStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        letterSpacing: 0.0,
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color: Color(0x33000000),
+                                      offset: Offset(
+                                        0.0,
+                                        4.0,
                                       ),
-                                  hintText: 'Search...',
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Karma',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFFAB8424),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  filled: true,
-                                  fillColor: Color(0xFFFFF9EA),
+                                    )
+                                  ],
                                 ),
-                                style: FlutterFlowTheme.of(context)
+                                child: Container(
+                                  width: 200.0,
+                                  child: TextFormField(
+                                    key: ValueKey('SearchBar-TextField_ewi7'),
+                                    controller:
+                                        _model.searchBarTextFieldTextController,
+                                    focusNode:
+                                        _model.searchBarTextFieldFocusNode,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.searchBarTextFieldTextController',
+                                      Duration(milliseconds: 500),
+                                      () => safeSetState(() {}),
+                                    ),
+                                    autofocus: false,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      isDense: true,
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                      hintText: 'Search...',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            font: GoogleFonts.karma(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFFAB8424),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      filled: true,
+                                      fillColor: Color(0xFFFFF9EA),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                    cursorColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    validator: _model
+                                        .searchBarTextFieldTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                              FlutterFlowDropDown<String>(
+                                multiSelectController:
+                                    _model.dropDownValueController ??=
+                                        FormListFieldController<String>(
+                                            _model.dropDownValue ??=
+                                                List<String>.from(
+                                  _model.defaultSearch ?? [],
+                                )),
+                                options: [
+                                  'First name',
+                                  'Last name',
+                                  'Party',
+                                  'District',
+                                  'City or town'
+                                ],
+                                width: 120.0,
+                                height: 40.0,
+                                textStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      fontSize: 12.0,
                                       letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
-                                cursorColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                validator: _model
-                                    .searchBarTextFieldTextControllerValidator
-                                    .asValidator(context),
+                                hintText: 'Search By...',
+                                icon: Icon(
+                                  Icons.keyboard_arrow_down_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
+                                ),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                elevation: 2.0,
+                                borderColor: Colors.transparent,
+                                borderWidth: 0.0,
+                                borderRadius: 8.0,
+                                margin: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 12.0, 0.0),
+                                hidesUnderline: true,
+                                isOverButton: true,
+                                isSearchable: false,
+                                isMultiSelect: true,
+                                onMultiSelectChanged: (val) => safeSetState(
+                                    () => _model.dropDownValue = val),
                               ),
-                            ),
+                            ],
                           ),
                           Align(
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 20.0, 20.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.55),
-                                    child: Builder(
-                                      builder: (context) {
-                                        final candidateList = searchCandidatesRecordList
-                                            .where((e) =>
-                                                functions.contains(
-                                                    _model
-                                                        .searchBarTextFieldTextController
-                                                        .text,
-                                                    '${e.firstName}${e.middleInitial}${e.lastName}')! ||
-                                                (functions.contains(
-                                                        _model
-                                                            .searchBarTextFieldTextController
-                                                            .text,
-                                                        '${e.firstName}${e.lastName}')! ||
-                                                    functions.contains(
-                                                        _model
-                                                            .searchBarTextFieldTextController
-                                                            .text,
-                                                        '${e.firstName} ${e.lastName}')!))
-                                            .toList()
-                                            .take(3)
-                                            .toList();
+                                  10.0, 10.0, 10.0, 0.0),
+                              child: Container(
+                                height: MediaQuery.sizeOf(context).height * 0.7,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(0.0),
+                                ),
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.0, -1.0),
+                                  child: Builder(
+                                    builder: (context) {
+                                      final candidateList = searchCandidatesRecordList
+                                          .where((e) =>
+                                              (_model.dropDownValue!.contains(_model.allSearchOptions.elementAtOrNull(0)) &&
+                                                  (functions.contains(_model.searchBarTextFieldTextController.text, e.firstName)! ||
+                                                      functions.contains(
+                                                          e.firstName,
+                                                          _model
+                                                              .searchBarTextFieldTextController
+                                                              .text)!)) ||
+                                              (_model.dropDownValue!.contains(_model.allSearchOptions.elementAtOrNull(1)) &&
+                                                  (functions.contains(_model.searchBarTextFieldTextController.text, e.lastName)! ||
+                                                      functions.contains(
+                                                          e.lastName,
+                                                          _model
+                                                              .searchBarTextFieldTextController
+                                                              .text)!)) ||
+                                              (_model.dropDownValue!.contains(_model.allSearchOptions.elementAtOrNull(2)) &&
+                                                  (functions.contains(_model.searchBarTextFieldTextController.text, e.party)! || functions.contains(e.party, _model.searchBarTextFieldTextController.text)!)) ||
+                                              (_model.dropDownValue!.contains(_model.allSearchOptions.elementAtOrNull(3)) && (functions.contains(_model.searchBarTextFieldTextController.text, e.district)! || functions.contains(e.district, _model.searchBarTextFieldTextController.text)!)) ||
+                                              (_model.dropDownValue!.contains(_model.allSearchOptions.elementAtOrNull(4)) && (functions.contains(_model.searchBarTextFieldTextController.text, e.cityTown)! || functions.contains(e.cityTown, _model.searchBarTextFieldTextController.text)!)))
+                                          .toList();
 
-                                        return ListView.separated(
-                                          padding: EdgeInsets.zero,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount: candidateList.length,
-                                          separatorBuilder: (_, __) =>
-                                              SizedBox(height: 20.0),
-                                          itemBuilder:
-                                              (context, candidateListIndex) {
-                                            final candidateListItem =
-                                                candidateList[
-                                                    candidateListIndex];
-                                            return InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'SEARCH_PAGE_Candidate-Card_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'Candidate-Card_navigate_to');
+                                      return ListView.separated(
+                                        padding: EdgeInsets.zero,
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: candidateList.length,
+                                        separatorBuilder: (_, __) =>
+                                            SizedBox(height: 20.0),
+                                        itemBuilder:
+                                            (context, candidateListIndex) {
+                                          final candidateListItem =
+                                              candidateList[candidateListIndex];
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'SEARCH_PAGE_Candidate-Card_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Candidate-Card_navigate_to');
 
-                                                context.pushNamed(
-                                                  CandidateWidget.routeName,
-                                                  queryParameters: {
-                                                    'lastName': serializeParam(
-                                                      candidateListItem
-                                                          .lastName,
-                                                      ParamType.String,
+                                              context.pushNamed(
+                                                CandidateWidget.routeName,
+                                                queryParameters: {
+                                                  'lastName': serializeParam(
+                                                    candidateListItem.lastName,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          -0.9, 0.09),
+                                                  child: Container(
+                                                    width: 96.0,
+                                                    height: 96.0,
+                                                    clipBehavior:
+                                                        Clip.antiAlias,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
                                                     ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            -0.9, 0.09),
-                                                    child: Container(
-                                                      width: 96.0,
-                                                      height: 96.0,
-                                                      clipBehavior:
-                                                          Clip.antiAlias,
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                      child: Image.network(
-                                                        candidateListItem.image,
-                                                        fit: BoxFit.cover,
-                                                        alignment: Alignment(
-                                                            -0.2, 0.0),
-                                                      ),
+                                                    child: Image.network(
+                                                      candidateListItem.image,
+                                                      fit: BoxFit.cover,
+                                                      alignment:
+                                                          Alignment(-0.2, 0.0),
                                                     ),
                                                   ),
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.3, 0.08),
-                                                        child: Text(
-                                                          '${candidateListItem.firstName} ${candidateListItem.lastName}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Karma',
-                                                                color: Color(
-                                                                    0xFF7D6A3D),
-                                                                fontSize: 20.0,
-                                                                letterSpacing:
-                                                                    0.0,
+                                                ),
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.3, 0.08),
+                                                      child: Text(
+                                                        '${candidateListItem.firstName} ${candidateListItem.lastName}',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .karma(
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
-                                                        ),
+                                                              color: Color(
+                                                                  0xFF7D6A3D),
+                                                              fontSize: 20.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                            ),
                                                       ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.3, 0.08),
-                                                        child: Text(
-                                                          '${functions.elipseString(candidateListItem.cityTown, 15)}, RI',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Karma',
-                                                                color: Color(
-                                                                    0xFF7D6A3D),
-                                                                fontSize: 20.0,
-                                                                letterSpacing:
-                                                                    0.0,
+                                                    ),
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.3, 0.08),
+                                                      child: Text(
+                                                        '${functions.elipseString(candidateListItem.cityTown, 15)}, RI',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .karma(
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
-                                                        ),
+                                                              color: Color(
+                                                                  0xFF7D6A3D),
+                                                              fontSize: 20.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                            ),
                                                       ),
-                                                    ],
-                                                  ),
-                                                ].divide(SizedBox(width: 10.0)),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ].divide(SizedBox(width: 10.0)),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
@@ -457,6 +607,58 @@ class _SearchWidgetState extends State<SearchWidget> {
                                 },
                               ),
                             ),
+                            if ((valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false) !=
+                                    null) &&
+                                valueOrDefault<bool>(
+                                    currentUserDocument?.isAdmin, false))
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => FlutterFlowIconButton(
+                                    borderRadius: 64.0,
+                                    buttonSize: 80.0,
+                                    fillColor: Color(0xFFFCE8B9),
+                                    icon: Icon(
+                                      Icons.auto_awesome_rounded,
+                                      color: Color(0xFFAB8424),
+                                      size: 44.0,
+                                    ),
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'SEARCH_auto_awesome_rounded_ICN_ON_TAP');
+                                      logFirebaseEvent(
+                                          'IconButton_navigate_to');
+
+                                      context
+                                          .pushNamed(AdminpageWidget.routeName);
+                                    },
+                                  ),
+                                ),
+                              ),
+                            if (currentUserUid != '')
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: FlutterFlowIconButton(
+                                  key: ValueKey('IconButton_8xsr'),
+                                  borderRadius: 64.0,
+                                  buttonSize: 80.0,
+                                  fillColor: Color(0xFFAB8424),
+                                  icon: Icon(
+                                    Icons.star,
+                                    color: FlutterFlowTheme.of(context).info,
+                                    size: 40.0,
+                                  ),
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'SEARCH_PAGE_star_ICN_ON_TAP');
+                                    logFirebaseEvent('IconButton_navigate_to');
+
+                                    context.pushNamed(
+                                        FavoriteCandidateWidget.routeName);
+                                  },
+                                ),
+                              ),
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowIconButton(

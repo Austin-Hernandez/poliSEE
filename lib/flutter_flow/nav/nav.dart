@@ -5,8 +5,6 @@ import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/backend/push_notifications/push_notifications_handler.dart'
-    show PushNotificationsHandler;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -100,6 +98,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           builder: (context, params) => LoginWidget(),
         ),
         FFRoute(
+          name: AdminpageWidget.routeName,
+          path: AdminpageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => AdminpageWidget(),
+        ),
+        FFRoute(
+          name: CreateNewCanWidget.routeName,
+          path: CreateNewCanWidget.routePath,
+          builder: (context, params) => CreateNewCanWidget(),
+        ),
+        FFRoute(
           name: SearchWidget.routeName,
           path: SearchWidget.routePath,
           builder: (context, params) => SearchWidget(
@@ -118,6 +127,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: FavoriteCandidateWidget.routeName,
+          path: FavoriteCandidateWidget.routePath,
+          builder: (context, params) => FavoriteCandidateWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -313,7 +327,7 @@ class FFRoute {
                     ),
                   ),
                 )
-              : PushNotificationsHandler(child: page);
+              : page;
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

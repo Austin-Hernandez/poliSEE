@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:poli_s_e_e/flutter_flow/flutter_flow_drop_down.dart';
 import 'package:poli_s_e_e/flutter_flow/flutter_flow_icon_button.dart';
 import 'package:poli_s_e_e/flutter_flow/flutter_flow_widgets.dart';
 import 'package:poli_s_e_e/flutter_flow/flutter_flow_theme.dart';
@@ -30,6 +31,59 @@ void main() async {
       (WidgetTester tester) async {
     _overrideOnError();
 
+    await tester.pumpWidget(const MyApp());
+    await GoogleFonts.pendingFonts();
+
+    await tester.pumpAndSettle(
+      const Duration(milliseconds: 10000),
+      EnginePhase.sendSemanticsUpdate,
+      const Duration(milliseconds: 9000),
+    );
+    await tester.tap(find.byKey(const ValueKey('IconButton_8xsr')));
+    await tester.pumpAndSettle(
+      const Duration(milliseconds: 10000),
+      EnginePhase.sendSemanticsUpdate,
+      const Duration(milliseconds: 9000),
+    );
+    await tester.enterText(find.byKey(const ValueKey('Email-TextField_qg7y')),
+        'notAUser@gmail.com');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.enterText(
+        find.byKey(const ValueKey('Password-TextField_3cha')), 'notAPassword');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('Login-Button_6b52')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+  });
+
+  testWidgets('US1 Successful Account Creation', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(MyApp(
+      entryPage: SignupWidget(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.enterText(
+        find.byKey(const ValueKey('Email-Signup_xqf3')), 'j_barboza@uri.edu');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.enterText(
+        find.byKey(const ValueKey('Password-Signup_ohrr')), 'password');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.enterText(
+        find.byKey(const ValueKey('ConfirmPassword-Signup_rnei')), 'password');
+    FocusManager.instance.primaryFocus?.unfocus();
+    await tester.tap(find.byKey(const ValueKey('Button_gpln')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    expect(
+        find.byKey(const ValueKey('SearchBar-TextField_ewi7')), findsWidgets);
+  });
+
+  testWidgets('Unsuccessful Login Invalid Credentials',
+      (WidgetTester tester) async {
+    _overrideOnError();
+
     await tester.pumpWidget(MyApp(
       entryPage: LoginWidget(),
     ));
@@ -37,14 +91,37 @@ void main() async {
 
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(find.byKey(const ValueKey('Email-TextField_qg7y')),
-        'notAUser@gmail.com');
-    FocusManager.instance.primaryFocus?.unfocus();
-    await tester.enterText(
-        find.byKey(const ValueKey('Password-TextField_3cha')), 'notAPassword');
-    FocusManager.instance.primaryFocus?.unfocus();
-    await tester.tap(find.byKey(const ValueKey('Login-Button_9jkw')));
+        'faylynn@gmail.com');
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    expect(find.byKey(const ValueKey('Login-Button_9jkw')), findsWidgets);
+    await tester.enterText(
+        find.byKey(const ValueKey('Password-TextField_3cha')), 'PassWord');
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('Login-Button_6b52')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+  });
+
+  testWidgets('Unsuccessful Creation - Account Already Exists',
+      (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(MyApp(
+      entryPage: SignupWidget(),
+    ));
+    await GoogleFonts.pendingFonts();
+
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.enterText(
+        find.byKey(const ValueKey('Email-Signup_xqf3')), 'test@example.com');
+    await tester.enterText(
+        find.byKey(const ValueKey('Password-Signup_ohrr')), 'testpassword');
+    await tester.enterText(
+        find.byKey(const ValueKey('ConfirmPassword-Signup_rnei')),
+        'testpassword');
+    await tester.tap(find.byKey(const ValueKey('Button_gpln')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    expect(
+        find.text('Error: The email is already in use by a different account'),
+        findsWidgets);
   });
 }
 

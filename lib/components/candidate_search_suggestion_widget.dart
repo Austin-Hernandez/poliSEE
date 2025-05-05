@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'candidate_search_suggestion_model.dart';
 export 'candidate_search_suggestion_model.dart';
 
@@ -72,11 +73,17 @@ class _CandidateSearchSuggestionWidgetState
                 child: Text(
                   'Firstname Lastname\nHometown, RI',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Karma',
+                        font: GoogleFonts.karma(
+                          fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
                         color: Color(0xFF7D6A3D),
                         fontSize: 20.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                 ),
               ),
