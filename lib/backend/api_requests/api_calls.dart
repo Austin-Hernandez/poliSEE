@@ -8,136 +8,6 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class GoogleCivicAPICall {
-  static Future<ApiCallResponse> call() async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Google Civic API',
-      apiUrl:
-          'https://www.googleapis.com/civicinfo/v2/elections?key=AIzaSyCVPEM7AV3JafkCxGMSkSLI3kpZR0Uu3Zg',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
-    );
-  }
-}
-
-class GetElectionsCall {
-  static Future<ApiCallResponse> call({
-    List<String>? keyList,
-  }) async {
-    final key = _serializeList(keyList);
-
-    return ApiManager.instance.makeApiCall(
-      callName: 'GetElections',
-      apiUrl:
-          'https://www.googleapis.com/civicinfo/v2/elections?key=AIzaSyCVPEM7AV3JafkCxGMSkSLI3kpZR0Uu3Zg',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
-    );
-  }
-
-  static List<String>? electionName(dynamic response) => (getJsonField(
-        response,
-        r'''$.elections[:].name''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  static List<String>? electionDay(dynamic response) => (getJsonField(
-        response,
-        r'''$.elections[:].electionDay''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  static List<String>? odcDivisionID(dynamic response) => (getJsonField(
-        response,
-        r'''$.elections[:].ocdDivisionId''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-}
-
-class RepresentativeInfoByDivisionCall {
-  static Future<ApiCallResponse> call({
-    List<String>? keyList,
-    List<String>? ocdIdList,
-  }) async {
-    final key = _serializeList(keyList);
-    final ocdId = _serializeList(ocdIdList);
-
-    return ApiManager.instance.makeApiCall(
-      callName: 'representativeInfoByDivision',
-      apiUrl:
-          'https://www.googleapis.com/civicinfo/v2/representatives?address=Providence,RI&key=AIzaSyCVPEM7AV3JafkCxGMSkSLI3kpZR0Uu3Zg',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
-    );
-  }
-
-  static List<String>? officialName(dynamic response) => (getJsonField(
-        response,
-        r'''$.officials[:].name''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-}
-
-class RepresentativeInfoByDivisionCopyCall {
-  static Future<ApiCallResponse> call({
-    List<String>? keyList,
-    List<String>? ocdIdList,
-  }) async {
-    final key = _serializeList(keyList);
-    final ocdId = _serializeList(ocdIdList);
-
-    return ApiManager.instance.makeApiCall(
-      callName: 'representativeInfoByDivision Copy',
-      apiUrl:
-          'https://www.googleapis.com/civicinfo/v2/representatives?address=RI&key=AIzaSyCVPEM7AV3JafkCxGMSkSLI3kpZR0Uu3Zg',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
-    );
-  }
-}
-
 class GNewsCall {
   static Future<ApiCallResponse> call({
     String? q = 'Obama',
@@ -152,7 +22,7 @@ class GNewsCall {
         'q': q,
         'lang': "en",
         'country': "us",
-        'max': "5",
+        'max': "16",
         'in': "title, description",
         'nullable': "none",
         'sortBy': "publishedAt",

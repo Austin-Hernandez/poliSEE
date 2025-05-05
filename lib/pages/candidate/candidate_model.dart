@@ -7,6 +7,10 @@ import 'package:flutter/material.dart';
 class CandidateModel extends FlutterFlowModel<CandidateWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController1;
+  String? Function(BuildContext, String?)? textController1Validator;
   // State field(s) for Summary-TextField widget.
   FocusNode? summaryTextFieldFocusNode;
   TextEditingController? summaryTextFieldTextController;
@@ -17,17 +21,28 @@ class CandidateModel extends FlutterFlowModel<CandidateWidget> {
   TextEditingController? policyKeyIssuesTextFieldTextController;
   String? Function(BuildContext, String?)?
       policyKeyIssuesTextFieldTextControllerValidator;
+  // State field(s) for Citation-TextField widget.
+  FocusNode? citationTextFieldFocusNode;
+  TextEditingController? citationTextFieldTextController;
+  String? Function(BuildContext, String?)?
+      citationTextFieldTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {
+    textFieldFocusNode?.dispose();
+    textController1?.dispose();
+
     summaryTextFieldFocusNode?.dispose();
     summaryTextFieldTextController?.dispose();
 
     policyKeyIssuesTextFieldFocusNode?.dispose();
     policyKeyIssuesTextFieldTextController?.dispose();
+
+    citationTextFieldFocusNode?.dispose();
+    citationTextFieldTextController?.dispose();
   }
 
   /// Action blocks.

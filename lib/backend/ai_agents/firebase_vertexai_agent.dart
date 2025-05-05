@@ -97,6 +97,8 @@ class ChatManager {
     FFUploadedFile? audioAsset,
     String? videoUrl,
     FFUploadedFile? videoAsset,
+    String? pdfUrl,
+    FFUploadedFile? pdfAsset,
   }) async {
     await initializeChat(threadId, agentJson);
 
@@ -133,6 +135,15 @@ class ChatManager {
       parts.add(FileData(
           getMimeTypeFromUrl(videoUrl, defaultMimeType: 'video/mp4'),
           videoUrl));
+    }
+
+    // Add PDF if provided
+    if (pdfAsset != null && pdfAsset.bytes?.isNotEmpty == true) {
+      parts.add(InlineDataPart('application/pdf', pdfAsset.bytes!));
+    } else if (pdfUrl != null && pdfUrl.isNotEmpty) {
+      parts.add(FileData(
+          getMimeTypeFromUrl(pdfUrl, defaultMimeType: 'application/pdf'),
+          pdfUrl));
     }
 
     // Use Content.multi if we have multiple parts, otherwise just use Content.text

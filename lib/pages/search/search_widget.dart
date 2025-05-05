@@ -12,6 +12,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'search_model.dart';
 export 'search_model.dart';
 
@@ -19,7 +20,7 @@ class SearchWidget extends StatefulWidget {
   const SearchWidget({
     super.key,
     String? previousSearch,
-  }) : this.previousSearch = previousSearch ?? ' ';
+  }) : this.previousSearch = previousSearch ?? '';
 
   /// The name of the candidate whose page the user is coming from
   final String previousSearch;
@@ -216,15 +217,49 @@ class _SearchWidgetState extends State<SearchWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
                                           ),
                                       hintText: 'Search...',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Karma',
+                                            font: GoogleFonts.karma(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -266,8 +301,25 @@ class _SearchWidgetState extends State<SearchWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                     cursorColor: FlutterFlowTheme.of(context)
                                         .primaryText,
@@ -297,9 +349,22 @@ class _SearchWidgetState extends State<SearchWidget> {
                                 textStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
                                 hintText: 'Search By...',
                                 icon: Icon(
@@ -359,8 +424,6 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                   (functions.contains(_model.searchBarTextFieldTextController.text, e.party)! || functions.contains(e.party, _model.searchBarTextFieldTextController.text)!)) ||
                                               (_model.dropDownValue!.contains(_model.allSearchOptions.elementAtOrNull(3)) && (functions.contains(_model.searchBarTextFieldTextController.text, e.district)! || functions.contains(e.district, _model.searchBarTextFieldTextController.text)!)) ||
                                               (_model.dropDownValue!.contains(_model.allSearchOptions.elementAtOrNull(4)) && (functions.contains(_model.searchBarTextFieldTextController.text, e.cityTown)! || functions.contains(e.cityTown, _model.searchBarTextFieldTextController.text)!)))
-                                          .toList()
-                                          .take(8)
                                           .toList();
 
                                       return ListView.separated(
@@ -435,8 +498,16 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                                 .of(context)
                                                             .bodyMedium
                                                             .override(
-                                                              fontFamily:
-                                                                  'Karma',
+                                                              font: GoogleFonts
+                                                                  .karma(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
                                                               color: Color(
                                                                   0xFF7D6A3D),
                                                               fontSize: 20.0,
@@ -445,6 +516,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                             ),
                                                       ),
                                                     ),
@@ -458,8 +534,16 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                                 .of(context)
                                                             .bodyMedium
                                                             .override(
-                                                              fontFamily:
-                                                                  'Karma',
+                                                              font: GoogleFonts
+                                                                  .karma(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
                                                               color: Color(
                                                                   0xFF7D6A3D),
                                                               fontSize: 20.0,
@@ -468,6 +552,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                             ),
                                                       ),
                                                     ),
@@ -547,10 +636,32 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   ),
                                 ),
                               ),
+                            if (currentUserUid != '')
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: FlutterFlowIconButton(
+                                  key: ValueKey('IconButton_8xsr'),
+                                  borderRadius: 64.0,
+                                  buttonSize: 80.0,
+                                  fillColor: Color(0xFFAB8424),
+                                  icon: Icon(
+                                    Icons.star,
+                                    color: FlutterFlowTheme.of(context).info,
+                                    size: 40.0,
+                                  ),
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'SEARCH_PAGE_star_ICN_ON_TAP');
+                                    logFirebaseEvent('IconButton_navigate_to');
+
+                                    context.pushNamed(
+                                        FavoriteCandidateWidget.routeName);
+                                  },
+                                ),
+                              ),
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowIconButton(
-                                key: ValueKey('IconButton_8xsr'),
                                 borderRadius: 64.0,
                                 buttonSize: 80.0,
                                 fillColor: Color(0xFFAB8424),
