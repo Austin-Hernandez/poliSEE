@@ -1,66 +1,26 @@
 {
   "project_info": {
-    "project_number": "526831984163",
-    "firebase_url": "https://polisee-7280f-default-rtdb.firebaseio.com",
-    "project_id": "polisee-7280f",
-    "storage_bucket": "polisee-7280f.firebasestorage.app"
+    "project_number": "181866182683",
+    "project_id": "production-d2b97",
+    "storage_bucket": "production-d2b97.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:526831984163:android:5e906650453f4c58795b96",
-        "android_client_info": {
-          "package_name": "com.mycompany.polisee"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "526831984163-4te1bru1v22s2vng3t05es6sd46u58hv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCjPrJgwaHXTOp4GQDRwgqLdqpzfdqx6MI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "526831984163-4te1bru1v22s2vng3t05es6sd46u58hv.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:526831984163:android:eb47e2a7fb0ae9f3795b96",
+        "mobilesdk_app_id": "1:181866182683:android:5aa8cd2d6ef353014f60be",
         "android_client_info": {
           "package_name": "com.uricsc305.poliSEE"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "526831984163-4te1bru1v22s2vng3t05es6sd46u58hv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCjPrJgwaHXTOp4GQDRwgqLdqpzfdqx6MI"
+          "current_key": "AIzaSyDWvfHVKxejAH1FLFfeKvwaEu-BKHLFgwY"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "526831984163-4te1bru1v22s2vng3t05es6sd46u58hv.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
