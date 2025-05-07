@@ -264,6 +264,7 @@ extension TextStyleHelper on TextStyle {
     TextDecoration? decoration,
     double? lineHeight,
     List<Shadow>? shadows,
+    String? package,
   }) {
     if (useGoogleFonts && fontFamily != null) {
       font = GoogleFonts.getFont(fontFamily,
@@ -284,6 +285,7 @@ extension TextStyleHelper on TextStyle {
           )
         : copyWith(
             fontFamily: fontFamily,
+            package: package,
             color: color,
             fontSize: fontSize,
             letterSpacing: letterSpacing,

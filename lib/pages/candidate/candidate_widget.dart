@@ -178,22 +178,6 @@ class _CandidateWidgetState extends State<CandidateWidget> {
                                           ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-0.9, -0.95),
-                                          child: FlutterFlowIconButton(
-                                            borderRadius: 8.0,
-                                            icon: Icon(
-                                              Icons.menu_sharp,
-                                              color: Color(0xFF7D6A3D),
-                                              size: 35.0,
-                                            ),
-                                            onPressed: () {
-                                              print(
-                                                  'Menu-IconButton pressed ...');
-                                            },
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
                                               AlignmentDirectional(0.9, -0.95),
                                           child: FlutterFlowIconButton(
                                             borderRadius: 8.0,
